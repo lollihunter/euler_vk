@@ -29,7 +29,6 @@ def announce():
     for q in questions_to_announce:
         q.announced = 1
         announcer += f"Вопрос {q.id}\n"
-        announcer += q.statement
         announcer += f"\n\nНачало в {q.start_time}."
         announcer += f"\nОтвечать можно до {q.end_time}.\n\n"
     for chat in chats:
@@ -162,10 +161,13 @@ def check_answer_and_respond(event, message):
 
 
 def handle_new_message(event):
+    chat_id = event.object['message']['peer_id']
+    if chat_id < 2 * 10 ** 9:
+        return
+    text = event.object['message']['text'].split()
     update_playerbase(event)
     if not bot_is_called(event):
         return
-    text = event.object['message']['text'].split()
     for keyword in keywords:
         if text[1].lower() == keyword:
             keywords[keyword](event)
