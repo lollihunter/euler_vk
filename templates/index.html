@@ -1,0 +1,50 @@
+{% block content %}
+    <h1>Добавление задачи в архив</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
+        <p>
+            {{ form.statement.label }}<br>
+            {{ form.statement }}<br>
+        </p>
+        <p>
+            {{ form.correct_answer.label }}<br>
+            {{ form.correct_answer }}<br>
+        </p>
+        <p>
+            {{ form.announce_time.label }}<br>
+            {{ form.announce_time }}<br>
+        </p>
+        <p>
+            {{ form.start_time.label }}<br>
+            {{ form.start_time }}<br>
+        </p>
+        <p>
+            {{ form.end_time.label }}<br>
+            {{ form.end_time }}<br>
+        </p>
+        <p>
+            {{ form.points.label }}<br>
+            {{ form.points }}<br>
+        </p>
+        <p>
+            {{ form.secret_key.label }}<br>
+            {{ form.secret_key }}<br>
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    <h1>Удалить задачу</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ form2.hidden_tag() }}
+        {{ form2.csrf_token }}
+        <p>
+            {{ form2.id.label }}<br>
+            {{ form2.id }}<br>
+        </p>
+        <p>
+            {{ form2.secret_key.label }}<br>
+            {{ form2.secret_key }}<br>
+        </p>
+        <p>{{ form2.submit() }}</p>
+    </form>
+{% endblock %}
