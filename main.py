@@ -109,6 +109,10 @@ def print_active_tasks(event):
         Question.start_time < datetime.now(),
         Question.end_time > datetime.now()
     )).all()
+    solved = session.query(Solution).filter_by(group_id=data['peer_id']).all()
+    solved = set([t.task_id for t in solved])
+
+    questions = list(filter(lambda q: q.id not in solved, questions))
     answer = "Список активных вопросов:\n"
 
     if not questions:
