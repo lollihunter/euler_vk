@@ -32,8 +32,11 @@ def announce():
         announcer += f"\n\nНачало в {q.start_time}."
         announcer += f"\nОтвечать можно до {q.end_time}.\n\n"
     for chat in chats:
-        vk.messages.send(peer_id=chat, message=announcer,
-                         random_id=rndid())
+        try:
+            vk.messages.send(peer_id=chat, message=announcer,
+                            random_id=rndid())
+        except vk_api.exceptions.ApiError:
+            continue
     session.commit()
 
 
