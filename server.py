@@ -4,7 +4,7 @@ from add_task import *
 
 app = Flask(__name__)
 
-SECRET_KEY = 14882281337
+SECRET_KEY = ???
 app.config['SECRET_KEY'] = 'pivo_na_polu'
 
 
